@@ -12,12 +12,12 @@ public class Language {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @Column(unique = true)
-    private String Url;
+    private String url;
     private String name;
     private String rating;
 
     public Language(String url, String name, String rating) {
-        Url = url;
+        this.url = url;
         this.name = name;
         this.rating = rating;
     }
@@ -35,11 +35,11 @@ public class Language {
     }
 
     public String getUrl() {
-        return Url;
+        return url;
     }
 
     public void setUrl(String url) {
-        Url = url;
+        this.url = url;
     }
 
     public String getName() {

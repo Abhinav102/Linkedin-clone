@@ -12,12 +12,12 @@ public class College {
     @GeneratedValue(strategy = GenerationType.AUTO) 
     private Integer id;
     @Column(unique = true)
-    private String Url;
+    private String url;
     private String name;
     private String rating;
 
     public College(String url, String name, String rating) {
-        Url = url;
+        this.url = url;
         this.name = name;
         this.rating = rating;
      
@@ -32,10 +32,10 @@ public class College {
 		this.id = id;
 	}
 	public String getUrl() {
-		return Url;
+		return url;
 	}
 	public void setUrl(String url) {
-		Url = url;
+		this.url = url;
 	}
 	public String getName() {
 		return name;

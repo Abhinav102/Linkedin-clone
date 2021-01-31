@@ -13,12 +13,12 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @Column(unique = true)
-    private String Url;
+    private String url;
     private String name;
     private String rating;
 
-    public Company(String Url, String name, String rating) {
-        this.Url = Url;
+    public Company(String url, String name, String rating) {
+        this.url = url;
         this.name = name;
         this.rating = rating;
     }
@@ -35,11 +35,11 @@ public class Company {
     }
 
     public String getUrl() {
-        return Url;
+        return url;
     }
 
-    public void setUrl(String Url) {
-        this.Url = Url;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getName() {
