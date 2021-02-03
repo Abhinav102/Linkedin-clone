@@ -11,7 +11,7 @@ public class College {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) 
     private Integer id;
-    @Column(unique = true)
+    @Column(unique = true, length = 200)
     private String url;
     private String name;
     private String rating;

@@ -2,7 +2,7 @@ package com.kodem.demo.linkedin.educationModels.education;
 
 public class EducationRequestBody {
     private String course;
-    private String company;
+    private String college;
     private String duration;
     private String startMonth;
     private String endMonth;
@@ -10,10 +10,10 @@ public class EducationRequestBody {
     private String location;
     private String user;
 
-    public EducationRequestBody(String course, String company, String duration, String startMonth, String endMonth,
+    public EducationRequestBody(String course, String college, String duration, String startMonth, String endMonth,
             String description, String location, String user) {
         this.course = course;
-        this.company = company;
+        this.college = college;
         this.duration = duration;
         this.startMonth = startMonth;
         this.endMonth = endMonth;
@@ -30,12 +30,12 @@ public class EducationRequestBody {
         this.course = course;
     }
 
-    public String getCompany() {
-        return company;
+    public String getCollege() {
+        return college;
     }
 
-    public void setCompany(String company) {
-        this.company = company;
+    public void setCollege(String college) {
+        this.college = college;
     }
 
     public String getDuration() {

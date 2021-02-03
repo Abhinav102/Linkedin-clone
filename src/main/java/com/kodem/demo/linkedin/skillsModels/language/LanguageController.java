@@ -19,22 +19,22 @@ public class LanguageController {
     private LanguageService languageService;
 
     @PostMapping
-    public void createCompany(@RequestBody Language language) {
-        languageService.createCompany(language);
+    public void createLanguage(@RequestBody Language language) {
+        languageService.createLanguage(language);
     }
 
     @GetMapping
-    public List<Language> getAllCompanies() {
-        return languageService.getAllCompanies();
+    public List<Language> getAllLanguages() {
+        return languageService.getAllLanguages();
     }
 
     @PutMapping("/{url}")
-    public void updateCompany(@RequestBody Language language, @PathVariable String url) {
-        languageService.updateCompany(language, url);
+    public void updateLanguage(@RequestBody Language language, @PathVariable String url) {
+        languageService.updateLanguage(language, url);
     }
 
     @DeleteMapping("/{url}")
-    public void deleteCompany(@PathVariable String url) {
-        languageService.deleteCompany(url);
+    public void deleteLanguage(@PathVariable String url) {
+        languageService.deleteLanguage(url);
     }
 }

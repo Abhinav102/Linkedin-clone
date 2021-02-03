@@ -34,30 +34,30 @@ public class EducationController {
     private UserRepository userRepository;
 
     @PostMapping
-    public void createEducation(@RequestBody EducationRequestBody experienceRequestBody) {
-        College college = collegeRepository.findByUrl(experienceRequestBody.getCompany()).get();
-        User user = userRepository.findByUsername(experienceRequestBody.getUser()).get();
-        Education education = new Education(experienceRequestBody.getCourse(), college,
-                experienceRequestBody.getDuration(), experienceRequestBody.getStartMonth(),
-                experienceRequestBody.getEndMonth(), experienceRequestBody.getDescription(),
-                experienceRequestBody.getLocation(), user);
+    public void createEducation(@RequestBody EducationRequestBody educationRequestBody) {
+        College college = collegeRepository.findByUrl(educationRequestBody.getCollege()).get();
+        User user = userRepository.findByUsername(educationRequestBody.getUser()).get();
+        Education education = new Education(educationRequestBody.getCourse(), college,
+                educationRequestBody.getDuration(), educationRequestBody.getStartMonth(),
+                educationRequestBody.getEndMonth(), educationRequestBody.getDescription(),
+                educationRequestBody.getLocation(), user);
         educationRepository.save(education);
 
     }
 
     @GetMapping
-    public List<Education> getAllExperience(@PathParam("user") String username) {
+    public List<Education> getAllEducation(@PathParam("user") String username) {
         return educationRepository.findByUserUsername(username);
     }
 
     @PutMapping("/{id}")
-    public void updateEducation(@RequestBody EducationRequestBody experienceRequestBody, @PathVariable Integer id) {
-        College college = collegeRepository.findByUrl(experienceRequestBody.getCompany()).get();
-        User user = userRepository.findByUsername(experienceRequestBody.getUser()).get();
-        Education education = new Education(experienceRequestBody.getCourse(), college,
-                experienceRequestBody.getDuration(), experienceRequestBody.getStartMonth(),
-                experienceRequestBody.getEndMonth(), experienceRequestBody.getDescription(),
-                experienceRequestBody.getLocation(), user);
+    public void updateEducation(@RequestBody EducationRequestBody educationRequestBody, @PathVariable Integer id) {
+        College college = collegeRepository.findByUrl(educationRequestBody.getCollege()).get();
+        User user = userRepository.findByUsername(educationRequestBody.getUser()).get();
+        Education education = new Education(educationRequestBody.getCourse(), college,
+                educationRequestBody.getDuration(), educationRequestBody.getStartMonth(),
+                educationRequestBody.getEndMonth(), educationRequestBody.getDescription(),
+                educationRequestBody.getLocation(), user);
         education.setId(id);
         educationRepository.save(education);
 

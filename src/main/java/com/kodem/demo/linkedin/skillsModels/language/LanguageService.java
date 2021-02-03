@@ -11,28 +11,28 @@ public class LanguageService {
     @Autowired
     private LanguageRepository languageRepository;
 
-    public void createCompany(Language language) {
+    public void createLanguage(Language language) {
         languageRepository.save(language);
     }
 
     // Retrieve
-    public Language getCompany(String url) {
+    public Language getLanguage(String url) {
         return languageRepository.findByUrl(url).get();
     }
 
-    public List<Language> getAllCompanies() {
+    public List<Language> getAllLanguages() {
         return languageRepository.findAll();
     }
 
     // Update
-    public void updateCompany(Language updatedCompany, String url) {
-        Language oldCompany = languageRepository.findByUrl(url).get();
-        updatedCompany.setId(oldCompany.getId());
-        languageRepository.save(updatedCompany);
+    public void updateLanguage(Language updatedLanguage, String url) {
+        Language oldLanguage = languageRepository.findByUrl(url).get();
+        updatedLanguage.setId(oldLanguage.getId());
+        languageRepository.save(updatedLanguage);
     }
 
     // Delete
-    public void deleteCompany(String url) {
+    public void deleteLanguage(String url) {
         Language language = languageRepository.findByUrl(url).get();
         languageRepository.delete(language);
     }

@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/skills")
 public class SkillsController {
     @Autowired
-    private SkillsRepository experienceRepository;
+    private SkillsRepository skillsRepository;
 
     @Autowired
     private LanguageRepository LanguageRepository;
@@ -32,31 +32,31 @@ public class SkillsController {
     private UserRepository userRepository;
 
     @PostMapping
-    public void createExperience(@RequestBody SkillsRequestBody experienceRequestBody) {
-        Language language = LanguageRepository.findByUrl(experienceRequestBody.getLanguage()).get();
-        User user = userRepository.findByUsername(experienceRequestBody.getUser()).get();
+    public void createSkills(@RequestBody SkillsRequestBody skillsRequestBody) {
+        Language language = LanguageRepository.findByUrl(skillsRequestBody.getLanguage()).get();
+        User user = userRepository.findByUsername(skillsRequestBody.getUser()).get();
         Skills skills = new Skills(language,user);
-        experienceRepository.save(skills);
+        skillsRepository.save(skills);
 
     }
 
     @GetMapping
-    public List<Skills> getAllExperience(@PathParam("user") String username) {
-        return experienceRepository.findByUserUsername(username);
+    public List<Skills> getAllSkills(@PathParam("user") String username) {
+        return skillsRepository.findByUserUsername(username);
     }
 
     @PutMapping("/{id}")
-    public void updateExperience(@RequestBody SkillsRequestBody experienceRequestBody, @PathVariable Integer id) {
-        Language language = LanguageRepository.findByUrl(experienceRequestBody.getLanguage()).get();
-        User user = userRepository.findByUsername(experienceRequestBody.getUser()).get();
+    public void updateSkills(@RequestBody SkillsRequestBody skillsRequestBody, @PathVariable Integer id) {
+        Language language = LanguageRepository.findByUrl(skillsRequestBody.getLanguage()).get();
+        User user = userRepository.findByUsername(skillsRequestBody.getUser()).get();
         Skills skills = new Skills(language,user);
         skills.setId(id);
-        experienceRepository.save(skills);
+        skillsRepository.save(skills);
 
     }
 
     @DeleteMapping("/{id}")
-    public void deleteExperience(@PathVariable Integer id) {
-        experienceRepository.deleteById(id);
+    public void deleteSkills(@PathVariable Integer id) {
+        skillsRepository.deleteById(id);
     }
 }
