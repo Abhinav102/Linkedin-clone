@@ -8,31 +8,31 @@ import org.springframework.stereotype.Service;
 @Service
 public class CollegeService {
     @Autowired
-    private CollegeRepository CollegeRepository;
+    private CollegeRepository collegeRepository;
 
     public void createCompany(College college) {
-        CollegeRepository.save(college);
+        collegeRepository.save(college);
     }
 
     // Retrieve
     public College getCompany(String url) {
-        return CollegeRepository.findByUrl(url).get();
+        return collegeRepository.findByUrl(url).get();
     }
 
     public List<College> getAllCompanies() {
-        return CollegeRepository.findAll();
+        return collegeRepository.findAll();
     }
 
     // Update
     public void updateCompany(College updatedCompany, String url) {
-        College oldCompany = CollegeRepository.findByUrl(url).get();
+        College oldCompany = collegeRepository.findByUrl(url).get();
         updatedCompany.setId(oldCompany.getId());
-        CollegeRepository.save(updatedCompany);
+        collegeRepository.save(updatedCompany);
     }
 
     // Delete
     public void deleteCompany(String url) {
-        College college = CollegeRepository.findByUrl(url).get();
-        CollegeRepository.delete(college);
+        College college = collegeRepository.findByUrl(url).get();
+        collegeRepository.delete(college);
     }
 }

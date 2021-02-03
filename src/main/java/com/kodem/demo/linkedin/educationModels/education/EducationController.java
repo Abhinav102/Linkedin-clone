@@ -34,7 +34,7 @@ public class EducationController {
     private UserRepository userRepository;
 
     @PostMapping
-    public void createExperience(@RequestBody EducationRequestBody experienceRequestBody) {
+    public void createEducation(@RequestBody EducationRequestBody experienceRequestBody) {
         College college = collegeRepository.findByUrl(experienceRequestBody.getCompany()).get();
         User user = userRepository.findByUsername(experienceRequestBody.getUser()).get();
         Education education = new Education(experienceRequestBody.getCourse(), college,
@@ -51,7 +51,7 @@ public class EducationController {
     }
 
     @PutMapping("/{id}")
-    public void updateExperience(@RequestBody EducationRequestBody experienceRequestBody, @PathVariable Integer id) {
+    public void updateEducation(@RequestBody EducationRequestBody experienceRequestBody, @PathVariable Integer id) {
         College college = collegeRepository.findByUrl(experienceRequestBody.getCompany()).get();
         User user = userRepository.findByUsername(experienceRequestBody.getUser()).get();
         Education education = new Education(experienceRequestBody.getCourse(), college,
@@ -64,7 +64,7 @@ public class EducationController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteExperience(@PathVariable Integer id) {
+    public void deleteEducation(@PathVariable Integer id) {
         educationRepository.deleteById(id);
     }
 }
