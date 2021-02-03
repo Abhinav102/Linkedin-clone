@@ -20,22 +20,22 @@ public class CollegeController {
     private CollegeService collegeService;
 
     @PostMapping
-    public void createCompany(@RequestBody College College) {
-        collegeService.createCompany(College);
+    public void createCollege(@RequestBody College College) {
+        collegeService.createCollege(College);
     }
 
     @GetMapping
-    public List<College> getAllCompanies() {
-        return collegeService.getAllCompanies();
+    public List<College> getAllColleges() {
+        return collegeService.getAllColleges();
     }
 
     @PutMapping("/{url}")
-    public void updateCompany(@RequestBody College College, @PathVariable String url) {
-        collegeService.updateCompany(College, url);
+    public void updateCollege(@RequestBody College College, @PathVariable String url) {
+        collegeService.updateCollege(College, url);
     }
 
     @DeleteMapping("/{url}")
-    public void deleteCompany(@PathVariable String url) {
-        collegeService.deleteCompany(url);
+    public void deleteCollege(@PathVariable String url) {
+        collegeService.deleteCollege(url);
     }
 }

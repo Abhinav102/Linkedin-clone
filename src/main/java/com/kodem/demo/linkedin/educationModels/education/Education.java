@@ -14,7 +14,7 @@ public class Education {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Automatically Generates a value
     private Integer id;
-    private String role;
+    private String course;
 
     @ManyToOne // Many to One Relationship with Company
     private College college;
@@ -28,9 +28,9 @@ public class Education {
     @ManyToOne // Many to One Relationship with User
     private User user;
 
-    public Education(String role, College college, String duration, String startMonth, String endMonth,
+    public Education(String course, College college, String duration, String startMonth, String endMonth,
             String description, String location, User user) {
-        this.role = role;
+        this.course = course;
         this.college = college;
         this.duration = duration;
         this.startMonth = startMonth;
@@ -52,12 +52,12 @@ public class Education {
         this.id = id;
     }
 
-    public String getRole() {
-        return role;
+    public String getCourse() {
+        return course;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setCourse(String course) {
+        this.course = course;
     }
 
     public College getCollege() {

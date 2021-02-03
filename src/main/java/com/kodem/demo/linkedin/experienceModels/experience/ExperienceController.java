@@ -2,8 +2,6 @@ package com.kodem.demo.linkedin.experienceModels.experience;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
 import com.kodem.demo.linkedin.experienceModels.company.Company;
 import com.kodem.demo.linkedin.experienceModels.company.CompanyRepository;
 import com.kodem.demo.linkedin.userModel.User;
@@ -17,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -45,7 +44,7 @@ public class ExperienceController {
     }
 
     @GetMapping
-    public List<Experience> getAllExperience(@PathParam("user") String username) {
+    public List<Experience> getAllExperience(@RequestParam("user") String username) {
         return experienceRepository.findByUserUsername(username);
     }
 

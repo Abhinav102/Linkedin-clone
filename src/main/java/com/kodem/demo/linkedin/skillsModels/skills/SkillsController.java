@@ -2,8 +2,6 @@ package com.kodem.demo.linkedin.skillsModels.skills;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
 import com.kodem.demo.linkedin.skillsModels.language.Language;
 import com.kodem.demo.linkedin.skillsModels.language.LanguageRepository;
 import com.kodem.demo.linkedin.userModel.User;
@@ -17,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -26,14 +25,14 @@ public class SkillsController {
     private SkillsRepository skillsRepository;
 
     @Autowired
-    private LanguageRepository LanguageRepository;
+    private LanguageRepository languageRepository;
 
     @Autowired
     private UserRepository userRepository;
 
     @PostMapping
     public void createSkills(@RequestBody SkillsRequestBody skillsRequestBody) {
-        Language language = LanguageRepository.findByUrl(skillsRequestBody.getLanguage()).get();
+        Language language = languageRepository.findByUrl(skillsRequestBody.getLanguage()).get();
         User user = userRepository.findByUsername(skillsRequestBody.getUser()).get();
         Skills skills = new Skills(language,user);
         skillsRepository.save(skills);
@@ -41,13 +40,13 @@ public class SkillsController {
     }
 
     @GetMapping
-    public List<Skills> getAllSkills(@PathParam("user") String username) {
+    public List<Skills> getAllSkills(@RequestParam("user") String username) {
         return skillsRepository.findByUserUsername(username);
     }
 
     @PutMapping("/{id}")
     public void updateSkills(@RequestBody SkillsRequestBody skillsRequestBody, @PathVariable Integer id) {
-        Language language = LanguageRepository.findByUrl(skillsRequestBody.getLanguage()).get();
+        Language language = languageRepository.findByUrl(skillsRequestBody.getLanguage()).get();
         User user = userRepository.findByUsername(skillsRequestBody.getUser()).get();
         Skills skills = new Skills(language,user);
         skills.setId(id);

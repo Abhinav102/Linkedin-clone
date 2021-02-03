@@ -2,7 +2,6 @@ package com.kodem.demo.linkedin.educationModels.education;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
 
 import com.kodem.demo.linkedin.educationModels.college.College;
 import com.kodem.demo.linkedin.educationModels.college.CollegeRepository;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -46,9 +46,14 @@ public class EducationController {
     }
 
     @GetMapping
-    public List<Education> getAllEducation(@PathParam("user") String username) {
+    public List<Education> getAllEducation(@RequestParam("user") String username) {
         return educationRepository.findByUserUsername(username);
     }
+
+    //  @GetMapping
+    // public List<Education> getAllEducations() {
+    //     return educationRepository.findAll();
+    // }
 
     @PutMapping("/{id}")
     public void updateEducation(@RequestBody EducationRequestBody educationRequestBody, @PathVariable Integer id) {

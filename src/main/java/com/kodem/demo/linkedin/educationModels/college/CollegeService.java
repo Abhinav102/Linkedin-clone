@@ -10,28 +10,28 @@ public class CollegeService {
     @Autowired
     private CollegeRepository collegeRepository;
 
-    public void createCompany(College college) {
+    public void createCollege(College college) {
         collegeRepository.save(college);
     }
 
     // Retrieve
-    public College getCompany(String url) {
+    public College getCollege(String url) {
         return collegeRepository.findByUrl(url).get();
     }
 
-    public List<College> getAllCompanies() {
+    public List<College> getAllColleges() {
         return collegeRepository.findAll();
     }
 
     // Update
-    public void updateCompany(College updatedCompany, String url) {
-        College oldCompany = collegeRepository.findByUrl(url).get();
-        updatedCompany.setId(oldCompany.getId());
-        collegeRepository.save(updatedCompany);
+    public void updateCollege(College updatedCollege, String url) {
+        College oldCollege = collegeRepository.findByUrl(url).get();
+        updatedCollege.setId(oldCollege.getId());
+        collegeRepository.save(updatedCollege);
     }
 
     // Delete
-    public void deleteCompany(String url) {
+    public void deleteCollege(String url) {
         College college = collegeRepository.findByUrl(url).get();
         collegeRepository.delete(college);
     }
