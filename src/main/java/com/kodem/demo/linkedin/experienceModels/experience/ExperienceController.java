@@ -48,6 +48,11 @@ public class ExperienceController {
         return experienceRepository.findByUserUsername(username);
     }
 
+    @GetMapping("/{id}")
+    public Experience getExperience(@PathVariable Integer id) {
+        return experienceRepository.findById(id).get();
+    }
+
     @PutMapping("/{id}")
     public void updateExperience(@RequestBody ExperienceRequestBody experienceRequestBody, @PathVariable Integer id) {
         Company company = companyRepository.findByUrl(experienceRequestBody.getCompany()).get();

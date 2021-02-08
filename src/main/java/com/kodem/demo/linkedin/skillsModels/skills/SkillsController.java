@@ -43,7 +43,12 @@ public class SkillsController {
     public List<Skills> getAllSkills(@RequestParam("user") String username) {
         return skillsRepository.findByUserUsername(username);
     }
-
+    
+    @GetMapping("/{id}")
+    public Skills getSkill(@PathVariable Integer id) {
+        return skillsRepository.findById(id).get();
+    }
+    
     @PutMapping("/{id}")
     public void updateSkills(@RequestBody SkillsRequestBody skillsRequestBody, @PathVariable Integer id) {
         Language language = languageRepository.findByUrl(skillsRequestBody.getLanguage()).get();

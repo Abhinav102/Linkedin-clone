@@ -28,6 +28,13 @@ public class LanguageController {
         return languageService.getAllLanguages();
     }
 
+
+    @GetMapping("/{url}")
+    public Language getLanguage(@PathVariable String url) {
+        return languageService.getLanguage(url);
+    }
+
+
     @PutMapping("/{url}")
     public void updateLanguage(@RequestBody Language language, @PathVariable String url) {
         languageService.updateLanguage(language, url);

@@ -50,10 +50,11 @@ public class EducationController {
         return educationRepository.findByUserUsername(username);
     }
 
-    //  @GetMapping
-    // public List<Education> getAllEducations() {
-    //     return educationRepository.findAll();
-    // }
+
+    @GetMapping("/{id}")
+    public Education getEducation(@PathVariable Integer id) {
+        return educationRepository.findById(id).get();
+    }
 
     @PutMapping("/{id}")
     public void updateEducation(@RequestBody EducationRequestBody educationRequestBody, @PathVariable Integer id) {
